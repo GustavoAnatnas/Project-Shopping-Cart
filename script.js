@@ -1,4 +1,4 @@
-function createProductImageElement(imageSource) {
+ function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
   img.src = imageSource;
@@ -15,6 +15,7 @@ function createCustomElement(element, className, innerText) {
 function createProductItemElement({ sku, name, image }) {
   const section = document.createElement('section');
   section.className = 'item';
+
   section.appendChild(createCustomElement('span', 'item__sku', sku));
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
@@ -39,7 +40,19 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
-window.onload = () => { 
-  fetchProducts();
-  fetchItem();
+const getElements = async () => {
+  const products = await fetchProducts('computador');
+  const { results } = products;
+  const section = document.querySelector('.items');
+  results.forEach((produtos) => {
+      const { id, title, thumbnail } = produtos;
+      const produts = {
+         sku: id, 
+         name: title, 
+         image: thumbnail };
+      section.appendChild(createProductItemElement(produts));
+  });
+};
+window.onload = async () => { 
+  getElements();
 };
