@@ -106,10 +106,6 @@ body {
   display: none;
 }
 
-/* .item .item__image {
-  width: 100%;
-} */
-
 .item .item__title {
   display: flex;
   align-items: center;
@@ -139,7 +135,7 @@ body {
   flex-basis: 32%;
   flex-flow: column wrap;
   background-color: rgb(241, 241, 238);
-  height: 55vh;
+  height: 60vh;
 }
 
 .cart .cart__items {
