@@ -43,13 +43,14 @@ const getProductByID = async (event) => {
      cartItems.appendChild(produts); 
   };
 
-function createProductItemElement({ sku, name, image }) {
+function createProductItemElement({ sku, name, image, price }) {
   const section = document.createElement('section');
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
-  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__title', name));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price}`));
   const addButton = createCustomElement('button', 'item__add', 'Adicionar ao carrinho!');
   addButton.addEventListener('click', getProductByID);
   section.appendChild(addButton);
@@ -65,11 +66,12 @@ const getElements = async () => {
   const products = await fetchProducts('computador');
   const { results } = products;
   results.forEach((produtos) => {
-      const { id, title, thumbnail } = produtos;
+      const { id, title, thumbnail, price } = produtos;
       const produts = {
          sku: id, 
          name: title, 
          image: thumbnail,
+         price,
         };
         const section = document.querySelector('.items');
       section.appendChild(createProductItemElement(produts));
