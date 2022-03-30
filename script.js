@@ -13,13 +13,19 @@ function createCustomElement(element, className, innerText) {
 }
 
 function cartItemClickListener(event) {
-  event();
+  event.target.remove();
 }
-
+function emptyCart() {
+  const emptyCar = document.querySelector('.empty-cart');
+  const cartItems = document.querySelector('.cart__items');
+  emptyCar.addEventListener('click', function () {
+    cartItems.innerHTML = '';
+  });
+}
 function createCartItemElement({ sku, name, salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `${sku} ${name} R$${salePrice}`;
+  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
   li.addEventListener('click', cartItemClickListener);
   return li;
 }
@@ -72,4 +78,5 @@ const getElements = async () => {
 
 window.onload = async () => { 
   await getElements();
+  emptyCart();
 };
