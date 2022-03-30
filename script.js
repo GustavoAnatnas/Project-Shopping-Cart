@@ -18,7 +18,7 @@ function cartItemClickListener(event) {
 
 function createCartItemElement({ name, salePrice }) {
   const li = document.createElement('li');
-  li.className = 'cart__item';
+  li.className = 'cart__items';
   li.innerText = `${name} \n $${salePrice} \n\n`;
   li.addEventListener('click', cartItemClickListener);
   return li;
