@@ -13,10 +13,6 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
-// const saveCartItensStorage = () => {
-//   localStorage.setItem('carrinho', cartItems.innerHTML);
-// };
-
 function cartItemClickListener(event) {
   event.target.remove();
   saveCartItems();
@@ -89,12 +85,17 @@ const getElements = async () => {
 
 const sumValue = () => { 
   const total = document.querySelector('.total-price');
-  total.innerText = 'Total da Compra:`';
+  total.innerText = 'Total da Compra:';
+};
+
+const loadLocalStorage = () => {
+  const listItems = localStorage.getItem('cartItems');
+  cartItems.innerHTML = listItems;
 };
 
 window.onload = async () => {  
   await getElements();
   emptyCart();
   sumValue();
-  getSavedCartItems();
+  loadLocalStorage();
   };
