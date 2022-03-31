@@ -106,6 +106,10 @@ body {
   display: none;
 }
 
+.item__image {
+  width: 100%;
+}
+
 .item .item__title {
   display: flex;
   align-items: center;
@@ -135,7 +139,7 @@ body {
   flex-basis: 32%;
   flex-flow: column wrap;
   background-color: rgb(241, 241, 238);
-  height: 60vh;
+  height: 70vh;
 }
 
 .cart .cart__items {
@@ -150,4 +154,9 @@ body {
   border: 2px solid rgb(0, 33, 65);
   background-color: white;
   cursor: pointer;
+}
+
+.total-price{
+  position: inherit;
+  margin: 40px;
 }

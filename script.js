@@ -1,4 +1,5 @@
- function createProductImageElement(imageSource) {
+const cartItems = document.querySelector('.cart__items');
+function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
   img.src = imageSource;
@@ -12,20 +13,25 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
+const saveLocalStorage = async () => {
+  await saveCartItems(cartItems.innerHTML);
+};
+
 function cartItemClickListener(event) {
   event.target.remove();
+  saveLocalStorage();
 }
 function emptyCart() {
   const emptyCar = document.querySelector('.empty-cart');
-  const cartItems = document.querySelector('.cart__items');
   emptyCar.addEventListener('click', function () {
     cartItems.innerHTML = '';
   });
 }
-function createCartItemElement({ sku, name, salePrice }) {
+function createCartItemElement({ sku, name, salePrice, image }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.appendChild(createProductImageElement(image));
   li.addEventListener('click', cartItemClickListener);
   return li;
 }
@@ -38,8 +44,8 @@ const getProductByID = async (event) => {
       sku: productId.id, 
       name: productId.title, 
       salePrice: productId.price,
+      image: productId.thumbnail,
      });
-     const cartItems = document.querySelector('.cart__items');
      cartItems.appendChild(produts); 
   };
 
@@ -54,7 +60,6 @@ function createProductItemElement({ sku, name, image, price }) {
   const addButton = createCustomElement('button', 'item__add', 'Adicionar ao carrinho!');
   addButton.addEventListener('click', getProductByID);
   section.appendChild(addButton);
-
   return section;
 }
 
@@ -75,10 +80,17 @@ const getElements = async () => {
         };
         const section = document.querySelector('.items');
       section.appendChild(createProductItemElement(produts));
-  });
+      saveLocalStorage();
+    });
+};
+
+const sumValue = () => { 
+  const total = document.querySelector('.total-price');
+  total.innerText = '`Total da Compra:`';
 };
 
 window.onload = async () => { 
   await getElements();
   emptyCart();
-};
+  sumValue();
+  };
