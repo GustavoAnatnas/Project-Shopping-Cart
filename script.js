@@ -1,4 +1,5 @@
 const cartItems = document.querySelector('.cart__items');
+const cartItens = document.querySelector('ol.cart__items');
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -26,15 +27,14 @@ function emptyCart() {
   const emptyCar = document.querySelector('.empty-cart');
   emptyCar.addEventListener('click', function () {
     cartItems.innerHTML = '';   
+    saveCartLocal();
   });
-  saveCartLocal();
 }
 
-function createCartItemElement({ sku, name, salePrice, image }) {
+function createCartItemElement({ sku, name, salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  li.appendChild(createProductImageElement(image));
   li.addEventListener('click', cartItemClickListener);
   saveCartLocal();
   return li;
@@ -98,11 +98,14 @@ const loadLocalStorage = () => {
   cartItems.innerHTML = listItem;
 };
 
-loadLocalStorage();
+const removeItemAfterLoad = (remov) => {
+  cartItens.addEventListener('click', remov);
+};
 
 window.onload = async () => {  
   await getElements();
   emptyCart();
   sumValue();
   loadLocalStorage();
+  removeItemAfterLoad(cartItemClickListener);
   };
