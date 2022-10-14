@@ -16,7 +16,7 @@
 
 
 #### Entre na pasta do repositório clonado:
-- <code>cd Projeto-Arte-com-Pixels</code>
+- <code>cd Projeto-Carrinho-de-Comprass</code>
 
 #### Executando testes da Aplicação:
 - <code> npm test </code>
