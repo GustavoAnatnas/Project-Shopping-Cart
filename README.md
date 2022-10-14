@@ -9,7 +9,7 @@
 
 ## Instruções para Clonar Repositório e executar a aplicação: 
 #### Clone o repositório:
-- <code>git clone git@github.com:GustavoAnatnas/Projeto-Arte-com-Pixels.git</code>
+- <code>git clone git@github.com:GustavoAnatnas/Projeto-Carrinho-de-Compras.git</code>
 
 #### Instale as dependências: 
 - <code> npm install </code>
