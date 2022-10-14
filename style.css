@@ -20,6 +20,7 @@ body {
 
 .container-title {
   width: 80%;
+  cursor: default;
 }
 
 .title {
@@ -36,6 +37,7 @@ body {
   width: 40%;
   height: 100%;
   margin-left: 30px;
+  cursor: default;
 }
 
 .container-cartTitle span {
@@ -97,9 +99,17 @@ body {
   height: auto;
   margin: 5px;
   width: 200px;
-  border: 2px solid rgb(234, 234, 233);
-  border-radius: 5px;
+  border: 5px solid rgb(0, 33, 65);
+  border-radius: 65px 65px 10px 10px;
   box-sizing: border-box;
+  background-color: rgb(0, 33, 65);
+  box-shadow: 3px 3px 4px 0 rgb(117 127 137);
+}
+
+.item:hover {
+  background-color: rgb(9, 52, 93);
+  transform: scale(1.1);
+  transition: all 0.5s;
 }
 
 .item .item__sku {
@@ -108,6 +118,7 @@ body {
 
 .item__image {
   width: 100%;
+  border-radius: 60px 60px 0 0;
 }
 
 .item .item__title {
@@ -116,22 +127,36 @@ body {
   flex-grow: 1;
   padding: 10px;
   text-align: center;
+  background-color: rgb(241, 241, 238);
+  cursor: default;
 }
 
 .item__price {
-  color: rgb(255 0 0);
+  color: white;
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 900;
+  width: 90px;
+  flex-direction: row;
+  margin: auto;
+  cursor: default;
 }
 
 .item .item__add {
-  background-color: rgb(0, 33, 65);
+  background-color: rgb(255 75 75);
   border: 0;
   cursor: pointer;
-  margin: 0;
   padding: 10px;
   color: white;
+  border-radius: 100px;
+  margin: auto;
+}
+
+.item__add:hover {
+  background-color: rgb(255 75 75);
+  color: black;
+  transform: scale(1.1);
+  transition: all 0.5s;
 }
 
 .cart {
@@ -145,6 +170,7 @@ body {
 .cart .cart__items {
   height: 500px;
   overflow-y: scroll;
+  cursor: grabbing;
 }
 
 .empty-cart {
@@ -159,4 +185,15 @@ body {
 .total-price {
   position: inherit;
   margin: 40px;
+}
+
+.loading {
+  font-size: xx-large;
+  margin: auto;
+  font-weight: 800;
+  color: blue;
+}
+
+.material-icons {
+  cursor: default;
 }
