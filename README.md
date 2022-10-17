@@ -16,7 +16,7 @@
 
 
 #### Entre na pasta do repositório clonado:
-- <code>cd Projeto-Carrinho-de-Comprass</code>
+- <code>cd Projeto-Carrinho-de-Compras</code>
 
 #### Executando testes da Aplicação:
 - <code> npm test </code>
